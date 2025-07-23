@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma E-Learning - Escola Primária Tchaliwaya</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="text-white"><i class="fas fa-graduation-cap me-2"></i>Tchaliwaya E-Learning</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="javascript:void(0);" onclick="showSection('dashboard-section')">
+                        <i class="fas fa-tachometer-alt me-1"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="showSection('videoaulas-section')">
+                        <i class="fas fa-video me-1"></i> Videoaulas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="showSection('chatbot-section')">
+                        <i class="fas fa-robot me-1"></i> Chatbot IA
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="showSection('quiz-section')">
+                        <i class="fas fa-tasks me-1"></i> Quizzes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="showSection('forum-section')">
+                        <i class="fas fa-comments me-1"></i> Fórum
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" onclick="showSection('relatorio-section')">
+                        <i class="fas fa-chart-bar me-1"></i> Relatórios
+                    </a>
+                </li>
+            </ul>
+            <div class="d-flex align-items-center">
+                <div class="dropdown">
+                    <a class="dropdown-toggle d-flex align-items-center text-decoration-none" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown">
+                        <img src="img/login.jpg" class="profile-img me-2" alt="Perfil">
+                        <span class="d-none d-md-inline">Olá, Estudante</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Perfil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Configurações</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1>Aprendizagem Personalizada com IA</h1>
+                <p>A plataforma da Escola Primária Tchaliwaya integra tecnologia de inteligência artificial para adaptar o ensino às necessidades individuais de cada estudante.</p>
+                <a href="#recursos" class="btn btn-light btn-lg me-2"><i class="fas fa-info-circle me-2"></i>Saiba Mais</a>
+                <a href="javascript:void(0);" onclick="showSection('videoaulas-section')" class="btn btn-outline-light btn-lg"><i class="fas fa-play me-2"></i>Começar</a>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block text-center">
+                <img src="img/carousel-4.jpg" alt="Aprendizagem com IA" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Content -->
+<div class="container mt-4">
+
+    <!-- Dashboard Section -->
+    <section id="dashboard-section" class="content-section">
+        <h2 class="section-title">Dashboard</h2>
+        
+        <!-- Dashboard Cards -->
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Estudantes Ativos
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalStudents">245</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card dashboard-card-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Turmas Ativas
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="activeClasses">12</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card dashboard-card-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Lições Concluídas
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="completedLessons">1580</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-book-reader fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card dashboard-card-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Progresso Médio
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="averageProgress">78%</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tracking -->
+       <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Seu Progresso por Disciplina</h6>
+                    </div>
+                    <div class="card-body">
+                        <h6>Matemática</h6>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-danger" id="progress-matematica" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                        </div>
+                        <h6>Português</h6>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-warning" id="progress-portugues" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                        <h6>Ciências</h6>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-info" id="progress-ciencias" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                        </div>
+                        <h6>Geografia</h6>
+                        <div class="progress mb-4">
+                            <div class="progress-bar bg-success" id="progress-geografia" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recomendações de IA -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Recomendações Personalizadas com IA</h6>
+                    </div>
+                    <div class="card-body" id="recommendations-container">
+                        <!-- Recomendações serão carregadas via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videoaulas Section -->
+    <section id="videoaulas-section" class="content-section" style="display: none;">
+        <h2 class="section-title">Videoaulas</h2>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Aula em Destaque: Operações Matemáticas</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="video-container">
+                            <iframe src="img/Como aprender a fazer contas - Matemática para crianças - Problemas de adição simples - Continhas.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h5>Operações Matemáticas Básicas</h5>
+                        <p>Nesta aula, aprenderemos sobre as quatro operações matemáticas básicas: adição, subtração, multiplicação e divisão. A professora Ana Maria explica conceitos fundamentais com exemplos práticos do dia a dia.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="badge bg-success me-1">Matemática</span>
+                                <span class="badge bg-secondary me-1">1º Ano</span>
+                                <span class="badge bg-info">Básico</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm">
+                                <i class="fas fa-check me-1"></i>Marcar como concluído
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Próximas Aulas</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Alfabeto Português</h6>
+                                    <small class="text-muted">5 min</small>
+                                </div>
+                                <small class="text-muted">
+                                    <span class="badge bg-primary me-1">Português</span>
+                                    <span class="badge bg-secondary">1º Ano</span>
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Mundo Animal</h6>
+                                    <small class="text-muted">10 min</small>
+                                </div>
+                                <small class="text-muted">
+                                    <span class="badge bg-info me-1">Ciências</span>
+                                    <span class="badge bg-secondary">2º Ano</span>
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Tabuada do 2</h6>
+                                    <small class="text-muted">7 min</small>
+                                </div>
+                                <small class="text-muted">
+                                    <span class="badge bg-success me-1">Matemática</span>
+                                    <span class="badge bg-secondary">2º Ano</span>
+                                </small>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Geografia Local</h6>
+                                    <small class="text-muted">15 min</small>
+                                </div>
+                                <small class="text-muted">
+                                    <span class="badge bg-warning me-1">Geografia</span>
+                                    <span class="badge bg-secondary">3º Ano</span>
+                                </small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Materiais Complementares</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-file-pdf me-2 text-danger"></i>Apostila de Exercícios</span>
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-file-alt me-2 text-primary"></i>Lista de Atividades</span>
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></button>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-images me-2 text-success"></i>Figuras Ilustrativas</span>
+                                <button class="btn btn-sm btn-outline-primary"><i class="fas fa-download"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section id="chatbot-section" class="content-section" style="display: none;">
+        <h2 class="section-title">Chatbot Educacional com IA</h2>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Assistente Virtual Tchaliwaya</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="chat-container" id="chat-messages">
+                            <div class="chat-message bot-message">
+                                <strong>IA Tchaliwaya:</strong> Olá! Sou o assistente virtual da Escola Primária Tchaliwaya. Como posso ajudar você hoje? Posso explicar conceitos, recomendar atividades ou criar quizzes personalizados.
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="chat-input" class="form-control" placeholder="Digite sua pergunta aqui...">
+                            <button id="send-chat" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Enviar
+                            </button>
+                        </div>
+                        <div class="mt-3">
+                            <small class="text-muted">Sugestões de perguntas:</small>
+                            <div class="d-flex flex-wrap gap-1 mt-2">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-input').value='Quais são as videoaulas de matemática disponíveis?'">
+                                    Videoaulas de matemática
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-input').value='Crie um quiz sobre português para mim'">
+                                    Criar quiz
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="document.getElementById('chat-input').value='Preciso de ajuda com operações matemáticas'">
+                                    Ajuda com matemática
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz-section" class="content-section" style="display: none;">
+        <h2 class="section-title">Quizzes Gerados por IA</h2>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold">Quiz Personalizado</h6>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createQuizModal">
+                            <i class="fas fa-plus me-1"></i>Novo Quiz
+                        </button>
+                    </div>
+                    <div class="card-body" id="quiz-container">
+                        <div class="text-center py-5">
+                            <i class="fas fa-tasks fa-3x mb-3 text-muted"></i>
+                            <h5>Nenhum quiz ativo no momento</h5>
+                            <p>Clique em "Novo Quiz" para gerar um quiz personalizado com IA.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Quiz Recentes</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Quiz de Matemática Básica</h6>
+                                    <small class="text-muted">Completado: 90%</small>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">10 perguntas • Dificuldade: Fácil</small>
+                                    <small class="text-success">Completado ontem</small>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Quiz de Português</h6>
+                                    <small class="text-muted">Completado: 75%</small>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">8 perguntas • Dificuldade: Médio</small>
+                                    <small class="text-success">Completado há 3 dias</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Forum Section -->
+    <section id="forum-section" class="content-section" style="display: none;">
+        <h2 class="section-title">Fórum Interativo</h2>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold">Discussões Recentes</h6>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#newPostModal">
+                            <i class="fas fa-plus me-1"></i>Nova Discussão
+                        </button>
+                    </div>
+                    <div class="card-body" id="forum-posts">
+                        <!-- Posts do fórum serão carregados via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Tópicos Populares</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-primary p-2">Matemática</span>
+                            <span class="badge bg-info p-2">Português</span>
+                            <span class="badge bg-success p-2">Ciências</span>
+                            <span class="badge bg-warning p-2">Geografia</span>
+                            <span class="badge bg-secondary p-2">Tecnologia</span>
+                            <span class="badge bg-danger p-2">Artes</span>
+                            <span class="badge bg-dark p-2">História</span>
+                            <span class="badge bg-primary p-2">Exercícios</span>
+                            <span class="badge bg-info p-2">Dúvidas</span>
+                            <span class="badge bg-success p-2">Projetos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Participantes Ativos</h6>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex align-items-center">
+                                <img src="img/banner-11.jpg" class="profile-img me-2" alt="Perfil">
+                                <div>
+                                    <h6 class="mb-0">Luisa André</h6>
+                                    <small class="text-muted">15 postagens</small>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <img src="img/banner-9.jpg" class="profile-img me-2" alt="Perfil">
+                                <div>
+                                    <h6 class="mb-0">Agostinho Piriquito</h6>
+                                    <small class="text-muted">28 postagens</small>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <img src="img/banner-7.jpg" class="profile-img me-2" alt="Perfil">
+                                <div>
+                                    <h6 class="mb-0">Professor Cazola</h6>
+                                    <small class="text-muted">7 postagens</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Relatórios Section -->
+    <section id="relatorio-section" class="content-section" style="display: none;">
+        <h2 class="section-title">Relatórios Personalizados</h2>
+        
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Desempenho por Disciplina</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="report-chart">
+                            <canvas id="disciplineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Tempo de Estudo (Últimas 4 Semanas)</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="report-chart">
+                            <canvas id="studyTimeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h6 class="m-0 font-weight-bold">Análise Preditiva de Rendimento</h6>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                <i class="fas fa-filter me-1"></i>Filtrar
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="#">Último Mês</a></li>
+                                <li><a class="dropdown-item" href="#">Último Trimestre</a></li>
+                                <li><a class="dropdown-item" href="#">Último Ano</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-robot me-2"></i>
+                            <strong>Análise de IA:</strong> Com base no seu padrão de estudo e desempenho nos quizzes, nossa IA prevê que você terá excelentes resultados em Português, mas precisa dedicar mais tempo às atividades de Matemática.
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Disciplina</th>
+                                        <th>Progresso Atual</th>
+                                        <th>Previsão de Rendimento</th>
+                                        <th>Recomendações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Matemática</td>
+                                        <td>75%</td>
+                                        <td><span class="text-warning">Médio (80%)</span></td>
+                                        <td>Focar em exercícios práticos e videoaulas sobre multiplicação</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Português</td>
+                                        <td>85%</td>
+                                        <td><span class="text-success">Alto (95%)</span></td>
+                                        <td>Continuar com leituras e práticas de interpretação de texto</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ciências</td>
+                                        <td>60%</td>
+                                        <td><span class="text-danger">Baixo (65%)</span></td>
+                                        <td>Aumentar o tempo de estudo e realizar mais quizzes práticos</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Geografia</td>
+                                        <td>70%</td>
+                                        <td><span class="text-warning">Médio (75%)</span></td>
+                                        <td>Revisar materiais sobre mapas e regiões geográficas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header">
+                        <h6 class="m-0 font-weight-bold">Relatório para Encarregados de Educação</h6>
+                    </div>
+                    <div class="card-body">
+                        <p>Este relatório está disponível para compartilhar com os encarregados de educação. Inclui:</p>
+                        <ul>
+                            <li>Resumo de progresso em todas as disciplinas</li>
+                            <li>Tempo total dedicado aos estudos</li>
+                            <li>Áreas que precisam de mais atenção</li>
+                            <li>Recomendações para apoio em casa</li>
+                        </ul>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-primary me-2">
+                                <i class="fas fa-download me-1"></i>Baixar PDF
+                            </button>
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-envelope me-1"></i>Enviar por Email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos Section -->
+    <section id="recursos" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Recursos Inteligentes</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h5 class="card-title">Chatbot Educacional IA</h5>
+                            <p class="card-text">Assistente virtual inteligente que responde dúvidas, explica conceitos e oferece suporte personalizado 24/7.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h5 class="card-title">Recomendações Personalizadas</h5>
+                            <p class="card-text">Sistema que analisa o perfil de aprendizagem do estudante e sugere conteúdos adaptados às suas necessidades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h5 class="card-title">Quizzes Automáticos</h5>
+                            <p class="card-text">Avaliações geradas por IA que se adaptam ao nível de conhecimento do aluno para um aprendizado eficaz.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="card-title">Análise Preditiva</h5>
+                            <p class="card-text">Previsão de desempenho futuro com base em padrões de estudo e histórico de atividades.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h5 class="card-title">Fóruns Interativos</h5>
+                            <p class="card-text">Espaço colaborativo para discussões, compartilhamento de dúvidas e troca de conhecimentos entre estudantes e professores.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h5 class="card-title">Relatórios Detalhados</h5>
+                            <p class="card-text">Informações completas sobre o progresso do aluno para acompanhamento pelos professores e encarregados de educação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Escola Primária Tchaliwaya</h5>
+                <p>Transformando a educação com tecnologia e personalização através da inteligência artificial.</p>
+                <div class="social-icons mt-3">
+                    <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="me-2"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5>Links Úteis</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#"><i class="fas fa-angle-right me-2"></i>Sobre a Escola</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right me-2"></i>Equipe Pedagógica</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right me-2"></i>Calendário Escolar</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right me-2"></i>Materiais Didáticos</a></li>
+                    <li><a href="#"><i class="fas fa-angle-right me-2"></i>Contato</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Contato</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt me-2"></i>Av. Fidel_Castro, - Bairro da Escola de Condução ECAT</li>
+                    <li><i class="fas fa-phone me-2"></i>(+244) 945-710-948</li>
+                    <li><i class="fas fa-envelope me-2"></i>contato@tchaliwaya.com</li>
+                </ul>
+                <div class="mt-3">
+                    <a href="#" class="btn btn-outline-light btn-sm">Área do Professor</a>
+                    <a href="#" class="btn btn-outline-light btn-sm">Suporte</a>
+                </div>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center">
+            <p>&copy; 2025 Escola Primária Tchaliwaya. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Modals -->
+<!-- Create Quiz Modal -->
+<div class="modal fade" id="createQuizModal" tabindex="-1" aria-labelledby="createQuizModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createQuizModalLabel">Criar Novo Quiz</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="quizSubject" class="form-label">Disciplina</label>
+                        <select class="form-select" id="quizSubject">
+                            <option value="matemática">Matemática</option>
+                            <option value="português">Português</option>
+                            <option value="ciências">Ciências</option>
+                            <option value="geografia">Geografia</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quizDifficulty" class="form-label">Nível de Dificuldade</label>
+                        <select class="form-select" id="quizDifficulty">
+                            <option value="facil">Fácil</option>
+                            <option value="medio">Médio</option>
+                            <option value="dificil">Difícil</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="quizQuestions" class="form-label">Número de Perguntas</label>
+                        <input type="number" class="form-control" id="quizQuestions" min="5" max="20" value="10">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Gerar Quiz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- New Post Modal -->
+<div class="modal fade" id="newPostModal" tabindex="-1" aria-labelledby="newPostModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="newPostModalLabel">Nova Discussão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="postTitle" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="postTitle" placeholder="Digite o título da discussão">
+                    </div>
+                    <div class="mb-3">
+                        <label for="postContent" class="form-label">Conteúdo</label>
+                        <textarea class="form-control" id="postContent" rows="5" placeholder="Escreva sua mensagem aqui"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="postTags" class="form-label">Categorias</label>
+                        <select class="form-select" id="postTags" multiple>
+                            <option value="matemática">Matemática</option>
+                            <option value="português">Português</option>
+                            <option value="ciências">Ciências</option>
+                            <option value="geografia">Geografia</option>
+                            <option value="dúvidas">Dúvidas</option>
+                            <option value="exercícios">Exercícios</option>
+                        </select>
+                        <small class="text-muted">Segure Ctrl para selecionar múltiplas categorias</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Publicar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://lib.youware.com/youware-lib-consumer.1751946057.js" id="yourware-lib"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Custom JS -->
+<script src="js/script.js"></script>
+
+<!-- Charts Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gráfico de desempenho por disciplina
+        if (document.getElementById('disciplineChart')) {
+            const disciplineCtx = document.getElementById('disciplineChart').getContext('2d');
+            const disciplineChart = new Chart(disciplineCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Matemática', 'Português', 'Ciências', 'Geografia'],
+                    datasets: [{
+                        label: 'Nota Atual',
+                        data: [75, 85, 60, 70],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.5)',
+                            'rgba(255, 205, 86, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(75, 192, 192, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 205, 86)',
+                            'rgb(54, 162, 235)',
+                            'rgb(75, 192, 192)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Gráfico de tempo de estudo
+        if (document.getElementById('studyTimeChart')) {
+            const studyTimeCtx = document.getElementById('studyTimeChart').getContext('2d');
+            const studyTimeChart = new Chart(studyTimeCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                    datasets: [{
+                        label: 'Horas de Estudo',
+                        data: [5, 7, 4, 8],
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
